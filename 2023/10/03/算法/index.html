@@ -30,10 +30,11 @@
 <meta property="og:image" content="http://example.com/img/S4.png">
 <meta property="og:image" content="http://example.com/img/A1.jpg">
 <meta property="og:image" content="http://example.com/img/A2.jpg">
-<meta property="og:image" content="http://example.com/2023/10/03/%E7%AE%97%E6%B3%95/img/S5.png">
+<meta property="og:image" content="http://example.com/img/S5.png">
 <meta property="og:image" content="http://example.com/img/s6.png">
+<meta property="og:image" content="http://example.com/img/S7.png">
 <meta property="article:published_time" content="2023-10-03T02:35:34.000Z">
-<meta property="article:modified_time" content="2023-10-06T11:48:54.393Z">
+<meta property="article:modified_time" content="2023-10-07T13:51:21.588Z">
 <meta property="article:author" content="casesic">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -230,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k 字
+          4.2k 字
         
       </span>
     
@@ -241,7 +242,7 @@
         
         
         
-          23 分钟
+          36 分钟
         
       </span>
     
@@ -404,17 +405,49 @@
 <li>子问题的解求取一次，结果保存在表中，以后用到时直接存取</li>
 </ul>
 </li>
+<li><p>带有记忆的递归</p>
+</li>
 <li><p>例子</p>
 <ul>
-<li><p>斐波那契序列(参考分治法中的)</p>
+<li><p>斐波那契序列</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-number">1.</span>(子问题)subproblem: <span class="hljs-constructor">F(<span class="hljs-params">i</span>)</span>=Fi     <span class="hljs-number">1</span>&lt;=i&lt;=n<br><span class="hljs-number">2.</span>Relate:   <span class="hljs-constructor">F(<span class="hljs-params">i</span>)</span>=<span class="hljs-constructor">F(<span class="hljs-params">i</span>-1)</span>+<span class="hljs-constructor">F(<span class="hljs-params">i</span>-2)</span><br><span class="hljs-number">3.</span>Topological order: increasing i, <span class="hljs-keyword">for</span> i=<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,...n<br><span class="hljs-number">4.</span>base case: <span class="hljs-constructor">F(1)</span>=<span class="hljs-number">1</span>,<span class="hljs-constructor">F(2)</span>=<span class="hljs-number">1</span><br><span class="hljs-number">5.</span>origin problem :<span class="hljs-constructor">F(<span class="hljs-params">n</span>)</span><br><span class="hljs-number">6.</span>time: 呈指数级增长<br></code></pre></td></tr></table></figure>
+
+
+
 <p>自上而下的</p>
-<img src="img/S5.png" srcset="/img/loading.gif" lazyload style="zoom:40%;" />
+<img src="/img/S5.png" srcset="/img/loading.gif" lazyload style="zoom:40%;" />
+
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs excel">Memoizati<span class="hljs-symbol">on:</span>记住并重用子问题的解决方案<br><span class="hljs-built_in">time</span> <span class="hljs-symbol">:</span>Θ(<span class="hljs-built_in">n</span>)<br></code></pre></td></tr></table></figure>
+
+
 
 <p>自下而上的</p>
 <img src="/img/s6.png" srcset="/img/loading.gif" lazyload style="zoom:40%;" />
 </li>
-<li><p>最长公共子序列问题</p>
+<li><p>DAG(有向无环图)最短路径问题</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">给出有向无环图G和点s,计算<span class="hljs-constructor">S(<span class="hljs-params">s</span>,<span class="hljs-params">v</span>)</span>对于任意的v∈V<br>-subproblem:  <span class="hljs-constructor">S(<span class="hljs-params">s</span>,<span class="hljs-params">v</span>)</span><br>-relate: <span class="hljs-constructor">S(<span class="hljs-params">s</span>,<span class="hljs-params">v</span>)</span>=min&#123;<span class="hljs-constructor">S(<span class="hljs-params">s</span>,<span class="hljs-params">u</span>)</span>+w(u,v)<span class="hljs-pattern-match">|u∈adj(v)&#125;  (adj(v)的意思是v的邻接列表)</span><br><span class="hljs-pattern-match">-topo order:topo order <span class="hljs-keyword">of</span> <span class="hljs-constructor">G(DAG)</span></span><br><span class="hljs-pattern-match">-base: <span class="hljs-constructor">S(<span class="hljs-params">s</span>,<span class="hljs-params">s</span>)</span>=∅</span><br><span class="hljs-pattern-match">-original: 所有的子问题</span><br><span class="hljs-pattern-match">-time ∑(v∈<span class="hljs-constructor">V</span>)<span class="hljs-constructor">O(1+ADJ(<span class="hljs-params">v</span>)</span>)=<span class="hljs-constructor">O(|E|+|V|)</span></span><br></code></pre></td></tr></table></figure>
 </li>
+<li><p>保龄球问题</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css">给n个保龄球(pin)<br>-第<span class="hljs-selector-tag">i</span>个保龄球值vi<br>-击倒<span class="hljs-number">1</span>个保龄球<span class="hljs-selector-tag">i</span>,得到vi个分数<br>-击倒<span class="hljs-number">2</span>个保龄球<span class="hljs-selector-tag">i</span>,<span class="hljs-selector-tag">i</span>+<span class="hljs-number">1</span>,得到vi*v(<span class="hljs-selector-tag">i</span>+<span class="hljs-number">1</span>)分数<br></code></pre></td></tr></table></figure>
+
+<p>好的子问题：</p>
+<ul>
+<li>前缀  x[ : i]     Θ(n)</li>
+<li>后缀  x[i:  ]     Θ(n)</li>
+<li>子串  x[i: j]     Θ(n^2)</li>
+</ul>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs subunit">subproblem: B(i)=maxscore possible starting with pins i,i<span class="hljs-string">+1</span>...n<span class="hljs-string">-1</span><br>Relate: B(i)=max&#123;B(i<span class="hljs-string">+1</span>),B(i<span class="hljs-string">+1</span>)+vi,B(i<span class="hljs-string">+2</span>)+vi*v(i<span class="hljs-string">+1</span>)&#125;<br>topo order:decreasing i<br>base:B(n)=0<br>original: B(0)<br><span class="hljs-keyword">time:</span> Θ(n)<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>最长公共子序列(LCS)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css">H <span class="hljs-selector-tag">I</span> E R O C L Y  <span class="hljs-selector-tag">P</span> H O L O G Y   和  M <span class="hljs-selector-tag">I</span> C H <span class="hljs-selector-tag">A</span> E L <span class="hljs-selector-tag">A</span> N G E L O 给两个序列<span class="hljs-selector-tag">A</span>和<span class="hljs-selector-tag">B</span>，找<span class="hljs-selector-tag">A</span>和<span class="hljs-selector-tag">B</span>最长的公共子序列<br>-subproblem: <span class="hljs-built_in">L</span>(i,j)=<span class="hljs-built_in">LCS</span>(A[i: ],B[j: ])<br>-relate: <span class="hljs-built_in">L</span>(i,j)=if A[i]=B[j]: <span class="hljs-number">1</span>+<span class="hljs-built_in">L</span>(i+<span class="hljs-number">1</span>,j+<span class="hljs-number">1</span>) else:=max&#123;L(<span class="hljs-selector-tag">i</span>+<span class="hljs-number">1</span>,j),L(<span class="hljs-selector-tag">i</span>,j+<span class="hljs-number">1</span>)&#125;<br>-topo: for i=|A|...<span class="hljs-number">0</span>,for j=|B|...<span class="hljs-number">0</span><br>-base: <span class="hljs-built_in">L</span>(|A|,j)=<span class="hljs-number">0</span>,<span class="hljs-built_in">L</span>(i,|B|)=<span class="hljs-number">0</span><br>-original:<span class="hljs-built_in">L</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)<br>-time: Θ(|A|*|B|)<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>最长递增子序列(LIS)</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs coq">给出序列A：C A R B O H Y D R A T E  找LIS(A)<br>-subproblem: L(i)=LIS(A[i: ])<br>-relate: L(i)=<span class="hljs-number">1</span>+max&#123;L(j)|<span class="hljs-type">i</span>&lt;=j&lt;|<span class="hljs-type">A</span>|<span class="hljs-type">,A</span>[i]&lt;A[j]&#125;  遍历i到|<span class="hljs-type">A</span>|<span class="hljs-type">之间的j</span><br>-original: max&#123;L(i)|<span class="hljs-type">0</span>&lt;=i&lt;=<span class="hljs-number">1</span>&#125;<br>-topo order: <span class="hljs-keyword">for</span> i=|<span class="hljs-type">A</span>|<span class="hljs-type">...0</span><br>-base: L(|<span class="hljs-type">A</span>|<span class="hljs-type">)=0</span><br>-<span class="hljs-built_in">time</span>: Θ(|<span class="hljs-type">A</span>|<span class="hljs-type">^2</span>)<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>交替硬币游戏</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs stylus">给出n个硬币价值为v0,..<span class="hljs-selector-class">.v</span>(n-<span class="hljs-number">1</span>),两个人轮流取最边上的硬币<br>-subproblem:(substring) <span class="hljs-built_in">x</span>(<span class="hljs-selector-tag">i</span>,j,p)=max total value I can get from coins of value vi to vj。p表示你或我<br>-relate:<span class="hljs-built_in">x</span>(<span class="hljs-selector-tag">i</span>,j,me)=max&#123;<span class="hljs-built_in">x</span>(i+<span class="hljs-number">1</span>,j,you)+vi,<span class="hljs-built_in">x</span>(<span class="hljs-selector-tag">i</span>,j-<span class="hljs-number">1</span>,you)+vj&#125;<br>        <span class="hljs-built_in">x</span>(<span class="hljs-selector-tag">i</span>,j,you)=min&#123;<span class="hljs-built_in">x</span>(i+<span class="hljs-number">1</span>,j,me),<span class="hljs-built_in">x</span>(<span class="hljs-selector-tag">i</span>,j-<span class="hljs-number">1</span>,me)&#125;<br>-topo:incr j-<span class="hljs-selector-tag">i</span><br>-base:<span class="hljs-built_in">x</span>(<span class="hljs-selector-tag">i</span>,<span class="hljs-selector-tag">i</span>,me)=vi <span class="hljs-built_in">x</span>(<span class="hljs-selector-tag">i</span>,<span class="hljs-selector-tag">i</span>,you)=<span class="hljs-number">0</span><br>-original:<span class="hljs-built_in">x</span>(<span class="hljs-number">0</span>,n,me)<br>-<span class="hljs-selector-tag">time</span>:Θ(n^<span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+
+<img src="/img/S7.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></li>
 </ul>
 </li>
 </ul>
