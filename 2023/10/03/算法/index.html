@@ -33,8 +33,9 @@
 <meta property="og:image" content="http://example.com/img/S5.png">
 <meta property="og:image" content="http://example.com/img/s6.png">
 <meta property="og:image" content="http://example.com/img/S7.png">
+<meta property="og:image" content="http://example.com/img/Y1.webp">
 <meta property="article:published_time" content="2023-10-03T02:35:34.000Z">
-<meta property="article:modified_time" content="2023-10-12T12:25:17.408Z">
+<meta property="article:modified_time" content="2023-10-13T13:25:00.514Z">
 <meta property="article:author" content="casesic">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -231,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.8k 字
+          6.8k 字
         
       </span>
     
@@ -242,7 +243,7 @@
         
         
         
-          49 分钟
+          57 分钟
         
       </span>
     
@@ -470,16 +471,108 @@
 <figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs excel">Inp<span class="hljs-symbol">ut:</span> 有一个连通的无向图G=（V，E），还有一个给边加权的函数w<br>为了更简单，假设所有边的权值都是互异的<br>Outp<span class="hljs-symbol">ut:</span>一棵生成树<span class="hljs-built_in">T</span>连接了所有的顶点，权重的总和还必须最小，w(<span class="hljs-built_in">T</span>)=∑w（u，v），(u,v)∈<span class="hljs-built_in">T</span><br><span class="hljs-built_in">T</span>是图G的最小生成树，<span class="hljs-symbol">G0</span>是一个由<span class="hljs-built_in">T</span>所导出的图G的子图<br>移开<span class="hljs-built_in">T</span>中的一条边，出现两棵树<span class="hljs-symbol">T1</span>和<span class="hljs-symbol">T2</span>，<span class="hljs-symbol">G1</span>是由<span class="hljs-symbol">T1</span>导出的图，<span class="hljs-symbol">G2</span>是由<span class="hljs-symbol">T2</span>导出的图<br>w（<span class="hljs-built_in">T</span>）=w（u，v）十w（<span class="hljs-symbol">T1</span>）十w（<span class="hljs-symbol">T2</span>）<br>贪心算法的特性：一个局部最优解也是全局最优解<br><span class="hljs-built_in">T</span>是G(V,E)的最小生成树，A是V的任意子集，假设边(u,v)是连接着A到A的补集的最小权值的边，那么边(u,v)属于最小生成树<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>Prim算法</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++">把V-A维护成一个优先队列Q，Q的每一个顶点都赋一个值给它，就是连接A和V-A权值最小的边的权值<br>一开始Q包含了所有的顶点，A设为空集，此时优先队列的所有权值都会被设为正无穷<br>从一个顶点s出发,key[s]=<span class="hljs-number">0</span><br><span class="hljs-keyword">while</span> Q!=∅   <span class="hljs-comment">//当Q不为空集时，</span><br>  <span class="hljs-keyword">do</span> u&lt;-<span class="hljs-built_in">ExtractMin</span>(Q)   <span class="hljs-comment">//从Q中取出最小的元素</span><br>     <span class="hljs-keyword">for</span> each v ∈adj[u]<br>         <span class="hljs-keyword">do</span> <span class="hljs-keyword">if</span> v∈Q <span class="hljs-keyword">and</span> <span class="hljs-built_in">w</span>(v)&lt;<span class="hljs-built_in">key</span>(v)<br>             then key[v]&lt;-<span class="hljs-built_in">w</span>(v)<br>time=Θ(V*<span class="hljs-built_in">T</span>(extract_min)+E*<span class="hljs-built_in">T</span>(decrease))<br>Q       <span class="hljs-built_in">T</span>(extract_min)     <span class="hljs-built_in">T</span>(derease_key)     Total<br>array       <span class="hljs-built_in">O</span>(v)                <span class="hljs-built_in">O</span>(<span class="hljs-number">1</span>)           <span class="hljs-built_in">O</span>(v^<span class="hljs-number">2</span>)<br>binary heap  <span class="hljs-built_in">O</span>(lgv)             <span class="hljs-built_in">O</span>(lgv)         <span class="hljs-built_in">O</span>(Elgv)  <br>Fib heap    <span class="hljs-built_in">O</span>(lgv)              <span class="hljs-built_in">O</span>(<span class="hljs-number">1</span>)           <span class="hljs-built_in">O</span>(E+vlgv)<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++">把V-A维护成一个优先队列Q，Q的每一个顶点都赋一个值给它，就是连接A和V-A权值最小的边的权值<br>一开始Q包含了所有的顶点，A设为空集，此时优先队列的所有权值都会被设为正无穷<br>从一个顶点s出发,key[s]=<span class="hljs-number">0</span><br><span class="hljs-keyword">while</span> Q!=∅   <span class="hljs-comment">//当Q不为空集时，</span><br>  <span class="hljs-keyword">do</span> u←<span class="hljs-built_in">ExtractMin</span>(Q)   <span class="hljs-comment">//从Q中取出最小的元素</span><br>     <span class="hljs-keyword">for</span> each v ∈adj[u]<br>         <span class="hljs-keyword">do</span> <span class="hljs-keyword">if</span> v∈Q <span class="hljs-keyword">and</span> <span class="hljs-built_in">w</span>(v)&lt;<span class="hljs-built_in">key</span>(v)<br>             then key[v]←<span class="hljs-built_in">w</span>(v)<br>time=Θ(V*<span class="hljs-built_in">T</span>(extract_min)+E*<span class="hljs-built_in">T</span>(decrease))<br>Q       <span class="hljs-built_in">T</span>(extract_min)     <span class="hljs-built_in">T</span>(derease_key)     Total<br>array       <span class="hljs-built_in">O</span>(v)                <span class="hljs-built_in">O</span>(<span class="hljs-number">1</span>)           <span class="hljs-built_in">O</span>(v^<span class="hljs-number">2</span>)<br>binary heap  <span class="hljs-built_in">O</span>(lgv)             <span class="hljs-built_in">O</span>(lgv)         <span class="hljs-built_in">O</span>(Elgv)  <br>Fib heap    <span class="hljs-built_in">O</span>(lgv)              <span class="hljs-built_in">O</span>(<span class="hljs-number">1</span>)           <span class="hljs-built_in">O</span>(E+vlgv)<br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 <h3 id="最短路径算法"><a href="#最短路径算法" class="headerlink" title="最短路径算法"></a>最短路径算法</h3><ul>
-<li>给出一个有向图G&#x3D;(V,E)，边的权重函数w<ul>
-<li>路径 p&#x3D;v1-&gt;v2…-&gt;vk,有 w(p)&#x3D;∑w(vi-&gt;vi+1)  (i∈(1,k-1)）</li>
-</ul>
+<li><p>给出一个有向图G&#x3D;(V,E)，边的权重函数w</p>
+<p>路径 p&#x3D;v1-&gt;v2…-&gt;vk,有 w(p)&#x3D;∑w(vi-&gt;vi+1)  (i∈(1,k-1)）</p>
 </li>
+<li><p>我们想求u点到v点的最短路径</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">S</span><span class="hljs-params">(u,v)</span></span>=min&#123;<span class="hljs-built_in">w</span>(p):<span class="hljs-selector-tag">p</span>(路径) from u to v&#125;<br>不存在最短路径的情况:<span class="hljs-number">1</span>.从u到v的路径上存在一个负环，这样可以通过不停地跑负环来减小路径<br>                  <span class="hljs-number">2</span>.一条从u到v的路径都没有<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>三角不等式：对于任意的点，u,v,x∈V，S(u,v)&lt;&#x3D;S(u,x)+S(x,v)</p>
+</li>
+<li><p>Dijkstra算法</p>
+<p>单源最短路径问题：找出从源点s到其他所有点的最短路径问题</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">假设w(u,v)&gt;=<span class="hljs-number">0</span>,对于任意的u,v∈V,最短路径存在<br><span class="hljs-number">1</span>.贪心算法<br>-maintain <span class="hljs-keyword">set</span> S <span class="hljs-keyword">of</span> vertices whose shortest-path distance form s <span class="hljs-keyword">is</span> known<br>-<span class="hljs-keyword">each</span> <span class="hljs-keyword">step</span> <span class="hljs-keyword">add</span> <span class="hljs-keyword">to</span> S the vertice v∈V-S whose distance estimate <span class="hljs-keyword">is</span> mininum<br>-update distance estimate<br>Dijkstra算法<br>d[s]&lt;-<span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> v∈V-<span class="hljs-comment">&#123;s&#125;</span><br>   <span class="hljs-keyword">do</span> d[v]←∞<br>S&lt;-∅<br>Q&lt;-V  <span class="hljs-comment">//Q为优先队列</span><br><span class="hljs-keyword">while</span> Q!=∅<br>   <span class="hljs-keyword">do</span> u←Extractmin(Q)<br>   S&lt;-S∪<span class="hljs-comment">&#123;u&#125;</span><br>   <span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> v∈adj(u)<br>     <span class="hljs-keyword">do</span> <span class="hljs-keyword">if</span> d[v]&gt;d[u]+w(u,v)<br>         <span class="hljs-keyword">then</span> d[v]=d[u]+w(u,v)<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>引理</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">suppose s-&gt;...&gt;u-&gt;v is a shortest path<br><span class="hljs-keyword">if</span> d<span class="hljs-literal">[<span class="hljs-identifier">u</span>]</span>=<span class="hljs-constructor">S(<span class="hljs-params">u</span>,<span class="hljs-params">v</span>)</span><br>   we relax edge(u-v)<br><span class="hljs-keyword">then</span> d<span class="hljs-literal">[<span class="hljs-identifier">v</span>]</span>=<span class="hljs-constructor">S(<span class="hljs-params">s</span>,<span class="hljs-params">v</span>)</span> after relaxation<br>d<span class="hljs-literal">[<span class="hljs-identifier">v</span>]</span>&gt;=<span class="hljs-constructor">S(<span class="hljs-params">s</span>,<span class="hljs-params">v</span>)</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Bellman-Ford</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">允许负权数的存在<br>d[s]←<span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> v ∈V-&#123;s&#125;<br>    <span class="hljs-keyword">do</span> d[v]←∞<br><span class="hljs-keyword">for</span> i←<span class="hljs-number">1</span> <span class="hljs-keyword">to</span> |V|<span class="hljs-number">-1</span><br>    <span class="hljs-keyword">do</span> <span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> edge (u,v)∈E<br>       <span class="hljs-keyword">do</span> <span class="hljs-keyword">if</span> d[v]&gt;d[u]+w(u,v)<br>          <span class="hljs-keyword">then</span> d[v]=d[u]+w(u,v)<br><span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> edge (u,v) ∈E<br>   <span class="hljs-keyword">do</span> <span class="hljs-keyword">if</span> d[v]&gt;d[u]+w(u,v)<br>      <span class="hljs-keyword">then</span> report that a negative-weight <span class="hljs-keyword">cycle</span> exist<br><span class="hljs-keyword">else</span> d[v]=S(s,v)<br><span class="hljs-type">Time</span>=O(VE)<br></code></pre></td></tr></table></figure></li>
 </ul>
+<blockquote>
+<p>它来自旅途的尽头，世界的边缘。来自你我心中，永不停歇</p>
+</blockquote>
+<img src="/img/Y1.webp" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
 
                 
               </div>
