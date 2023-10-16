@@ -23,10 +23,12 @@
 <meta property="og:site_name" content="casesic">
 <meta property="og:description" content="操作系统使用Linux&#x2F;Unix的基础命令系统的启动和关闭 系统注册 12# 超级用户$ 普通用户  系统登录 12345671.输入用户名login:root2.输入用户密码，输入的密码不会在屏幕上显示出来，如果输入的密码有误，提示以下信息login incorrectlogin:3.系统显示以下，则说明成功登录[root@localhost root]#  系统退出 123-键入:e">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/C1.png">
 <meta property="article:published_time" content="2023-10-14T12:50:17.000Z">
-<meta property="article:modified_time" content="2023-10-14T14:05:12.846Z">
+<meta property="article:modified_time" content="2023-10-16T13:48:44.502Z">
 <meta property="article:author" content="casesic">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/C1.png">
   
   
   
@@ -219,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          3.2k 字
         
       </span>
     
@@ -230,7 +232,7 @@
         
         
         
-          9 分钟
+          27 分钟
         
       </span>
     
@@ -303,7 +305,65 @@
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">语法:ls[参数]路径或文件名</span><br><span class="hljs-section">功能:列出文件或子目录的信息</span><br><span class="hljs-section">参数:</span><br><span class="hljs-section">-a:显示所有文件，包括以.开头的隐藏文件</span><br><span class="hljs-section">-l:以长格式显示文件或子目录的信息</span><br><span class="hljs-section">-i:显示每个文件的索引号</span><br><span class="hljs-section">-R:显示目录及下级子目录结构</span><br><span class="hljs-section">-S:以文件大小排序</span><br></code></pre></td></tr></table></figure>
 
 <p>ls -l</p>
+<img src="/img/C1.png" srcset="/img/loading.gif" lazyload style="zoom:70%;" />
+
+<p>蓝色：目录              浅蓝色：链接文件              绿色：可执行文件          红色：压缩文件         灰色：其他文件</p>
 </li>
+<li><p>pwd - 显示用户所处的当前目录</p>
+</li>
+<li><p>cd目录 - 改变当前目录</p>
+</li>
+<li><p>mkdir命令 - make directories建立目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">语法:<span class="hljs-built_in">mkdir</span>[参数]目录名<br>参数选项:-p:建立目录时，如果父目录不存在，则此时可以和子目录一起建立,即一次可建立多个目录<br>例子:<br><span class="hljs-built_in">mkdir</span> -p dir2/bak<br>在dir2目录下建立bak目录，如果dir2目录不存在，那么同时建立dir2目录<br><span class="hljs-built_in">mkdir</span> dir2/bak<br>在dir2目录下建立bak目录，这里的dir2目录必须是事先存在的<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>rmdir命令 - remove directories删除目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">语法:<span class="hljs-built_in">rmdir</span>[参数]目录名<br>参数选项:-p: 一起删除父目录时，父目录下应无其他目录<br>例子:<br><span class="hljs-built_in">rmdir</span> <span class="hljs-built_in">test</span><br>删除当前目录下的<span class="hljs-built_in">test</span>目录。删除目录时，被删除目录下应无子目录或文件存在<br><span class="hljs-built_in">rmdir</span> -p longkey/test<br>删除当前目录下的longkey/test目录。删除目录<span class="hljs-built_in">test</span>时，如果父目录longkey下无其他内容，则一起删除longkey目录<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>cp命令 - copy file拷贝文件</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs powershell">语法:<span class="hljs-built_in">cp</span>[<span class="hljs-type">options</span>] sourcefile destfile  将文件复制为另一文件<br>    <span class="hljs-built_in">cp</span>[<span class="hljs-type">options</span>] sourcefile... directory  将数个文件复制到一个目录<br>参数选项: <span class="hljs-literal">-p</span> 保持原始文件属性      <span class="hljs-operator">-f</span> 如果目标文件存在，则覆盖它<br>         <span class="hljs-literal">-i</span> 提示是否覆盖现有的普通目标文件    <span class="hljs-literal">-r</span> <span class="hljs-built_in">R</span>:递归复制目录，包含目录下的各级子目录,<span class="hljs-literal">-R</span>允许拷贝设备结点<br>注意:递归拷贝时，目的目录不能在原目录下。如: <span class="hljs-built_in">cp</span> <span class="hljs-literal">-r</span> //targetdir,会使系统死循环或瘫痪<br>例子:<br><span class="hljs-built_in">cp</span> aaa bbb<br>将文件aaa(已存在)复制，并命名为bbb<br><span class="hljs-built_in">cp</span> *.c Finished<br>将所有c语言程序拷贝至Finished目录中<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>rm命令 - 删除文件或目录</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs powershell">语法:<span class="hljs-built_in">rm</span>[-<span class="hljs-type">firR</span>] file/directory<br>参数选项: <span class="hljs-operator">-f</span> 不加提示的删除已存在的文件      <span class="hljs-literal">-i</span> 交互删除     <span class="hljs-literal">-r</span> <span class="hljs-built_in">R</span> 递归删除<br>例子:<br><span class="hljs-built_in">rm</span> <span class="hljs-literal">-i</span> *.c <br>删除所有c语言程序档;删除前逐一询问确认<br><span class="hljs-built_in">rm</span> <span class="hljs-literal">-r</span> Finished<br>将Finished的子目录及子目录的所有文件删除<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>mv命令 - move file移动文件或目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">语法: <span class="hljs-built_in">mv</span>[-<span class="hljs-keyword">fi</span>] sourcefile... targetdirectory     移动文件到目标目录<br>     <span class="hljs-built_in">mv</span> sourcefile targetfile  文件更名<br>参数选项: -f 不提示         -i:目标文件或目录存在时，提示是否覆盖<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>touch命令 - 生成空文件或修改文件的存取和修改时间</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">语法: <span class="hljs-built_in">touch</span>[参数]文件或目录名<br>例子:<br><span class="hljs-built_in">touch</span> *<br>将当前目录下所有文件时间修改为当前系统时间<br><span class="hljs-built_in">touch</span> -d 20050912 <span class="hljs-built_in">test</span> <br>将文件<span class="hljs-built_in">test</span>的时间修改为20050912,-t:后面可以接时间, 格式为 [YYMMDDhhmm]<br><span class="hljs-built_in">touch</span> abc <br>如果abc存在， 则修改为当前系统时间， 如果不存在， 则创建该文件<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="文件和目录的访问权限"><a href="#文件和目录的访问权限" class="headerlink" title="文件和目录的访问权限"></a>文件和目录的访问权限</h4><ul>
+<li><p>文件访问权限</p>
+<ul>
+<li>读权限:只允许用户读其内容，而禁止对其做任何的更改操作</li>
+<li>写权限：允许用户打开并修改文件</li>
+<li>执行权限：用户将该文件作为一个程序执行</li>
+</ul>
+</li>
+<li><p>目录访问权限</p>
+<ul>
+<li>读权限：可以列出存储在该目录下的文件，即读目录内容列表</li>
+<li>写权限：允许从目录中删除或添加新的文件</li>
+<li>执行权限：允许在目录中查找，并能用cd命令将工作目录转到该目录</li>
+</ul>
+</li>
+<li><p>权限变更</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span>命令<br><span class="hljs-built_in">chown</span>命令<br><span class="hljs-built_in">chgrp</span>命令<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="软链接和硬链接"><a href="#软链接和硬链接" class="headerlink" title="软链接和硬链接"></a>软链接和硬链接</h4><ul>
+<li><p>ln命令 - make links between file建立链接</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scss">语法：ln <span class="hljs-selector-attr">[–s]</span> 目标 链接名   (目标：源文件或目录)<br>参数：<br>-s：建立符号链接(软链接symbolic link) <br>    不加-s参数：建立硬链接(hard link)<br>功能：该命令在文件之间创建链接。这种操作实际上是给系统中已有的某个文件指定另外一个可用于访问它的名称。<br>•建立硬链接时，链接文件和被链接文件必须位于同一个文件系统中。而对符号链接，则不存在这个问题。<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>硬链接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">硬连接指通过索引节点来进行的连接。在Linux的文件系统中，保存在磁盘分区中的文件给它分配一个编号，称为索引节点号(Inode Index)。</span><br><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">在Linux中，多个文件名指向同一索引节点是存在的。一般这种连接就是硬连接。</span><br><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">硬连接的作用是允许一个文件拥有多个有效路径名，这样用户就可以建立硬连接到重要文件，以防止“误删”的功能。</span><br>只有当最后一个连接被删除后，文件的数据块及目录的连接才会被释放<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>软链接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">符号连接（Symbolic Link），也叫软链接。软链接文件有点类似于Windows的快捷方式。在符号连接中，文件实际上是一个文本文件，其中包含的有另一文件的位置信息。</span><br><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">如果[链接名]已经存在但不是目录，将不做链接。[链接名]可以是任何一个文件名（可包含路径），也可以是一个目录，并且允许它与“目标”不在同一个文件系统中。</span><br><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">例：$ <span class="hljs-built_in">ln</span> - s study /home/learn</span><br>为当前目录下的文件study创建了一个符号链接/home/learn。<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="文件压缩和备份命令"><a href="#文件压缩和备份命令" class="headerlink" title="文件压缩和备份命令"></a>文件压缩和备份命令</h4><ul>
+<li><p>tar命令 - 文件归档</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">语法:tar[参数] 文件或目录名</span><br><span class="hljs-section">参数:</span><br><span class="hljs-section">-c: 建立一个.tar文件</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 
                 
