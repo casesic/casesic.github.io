@@ -35,7 +35,7 @@
 <meta property="og:image" content="http://example.com/img/S7.png">
 <meta property="og:image" content="http://example.com/img/Y1.webp">
 <meta property="article:published_time" content="2023-10-03T02:35:34.000Z">
-<meta property="article:modified_time" content="2023-10-13T13:25:00.514Z">
+<meta property="article:modified_time" content="2023-11-23T00:41:50.390Z">
 <meta property="article:author" content="casesic">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.8k 字
+          7.9k 字
         
       </span>
     
@@ -243,7 +243,7 @@
         
         
         
-          57 分钟
+          66 分钟
         
       </span>
     
@@ -493,6 +493,44 @@
 </li>
 <li><p>Bellman-Ford</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">允许负权数的存在<br>d[s]←<span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> v ∈V-&#123;s&#125;<br>    <span class="hljs-keyword">do</span> d[v]←∞<br><span class="hljs-keyword">for</span> i←<span class="hljs-number">1</span> <span class="hljs-keyword">to</span> |V|<span class="hljs-number">-1</span><br>    <span class="hljs-keyword">do</span> <span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> edge (u,v)∈E<br>       <span class="hljs-keyword">do</span> <span class="hljs-keyword">if</span> d[v]&gt;d[u]+w(u,v)<br>          <span class="hljs-keyword">then</span> d[v]=d[u]+w(u,v)<br><span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> edge (u,v) ∈E<br>   <span class="hljs-keyword">do</span> <span class="hljs-keyword">if</span> d[v]&gt;d[u]+w(u,v)<br>      <span class="hljs-keyword">then</span> report that a negative-weight <span class="hljs-keyword">cycle</span> exist<br><span class="hljs-keyword">else</span> d[v]=S(s,v)<br><span class="hljs-type">Time</span>=O(VE)<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h3><ul>
+<li><p>算法名称</p>
+<p>有两种表示算法的伪代码：<br>过程（Procedure）<br>函数（Function）<br>过程和函数的区别是：<br>过程是执行一系列操作，不需要返回操作的结果，无返回数据。<br>函数是执行一系列的操作后，要将操作的结果返回，有返回数据。<br>简单来说二者就是<strong>有没有返回数据</strong>。<br>算法伪代码的书写规则：</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs delphi"><span class="hljs-function"><span class="hljs-keyword">Procedure</span> &lt;算法名&gt;<span class="hljs-params">([&lt;参数列表&gt;])</span></span><br><span class="hljs-function"><span class="hljs-title">Function</span> &lt;算法名&gt;<span class="hljs-params">([&lt;参数列表&gt;])</span></span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>指令序列</p>
+<p>指令序列是算法的主体。<br>指令序列的书写规则：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-keyword">Begin</span><br>	指令序列;<br><span class="hljs-keyword">End</span><br></code></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf">&#123;<br>	指令序列<span class="hljs-comment">;</span><br>/&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>输入和输出</p>
+<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sas">输入：<span class="hljs-keyword">Input</span><br>输出：<span class="hljs-keyword">Output</span> 或<span class="hljs-keyword">Return</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>分支选择</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>第一种<br>If&lt;条件&gt; Then<br>	&#123;<br>		指令序列;<br>	/&#125;<br><span class="hljs-regexp">//</span>第二种<br>If&lt;条件&gt; Then<br>	&#123;<br>		指令序列<span class="hljs-number">1</span>;<br>	/&#125;<br>Else<br>	&#123;<br>		指令序列<span class="hljs-number">2</span>;<br>	/&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>赋值</p>
+<p>有两种 可以用<code>:=</code>或者<code>&lt;-</code>作为赋值操作符，相当于C语言中的<code>=</code><br>例如：</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-symbol">x:</span><span class="hljs-operator">=</span><span class="hljs-keyword">x</span><span class="hljs-number">+1</span><span class="hljs-comment">;</span><br><span class="hljs-keyword">x</span>&lt;-<span class="hljs-keyword">x</span><span class="hljs-number">+1</span><span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>循环</p>
+<p>两种方式：计数式循环（for循环）和条件式循环（while循环）。<br>（1）计数式循环</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs abnf">For 变量：<span class="hljs-operator">=</span>初值 To 终值<br>&#123;<br>	指令序列<span class="hljs-comment">;</span><br>/&#125;<br></code></pre></td></tr></table></figure>
+
+<p>（2）条件式循环</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gcode"><span class="hljs-keyword">While</span> <span class="hljs-comment">(条件)</span> <span class="hljs-keyword">do</span><br>&#123;<br>	指令序列;<br>/&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>算法结束</p>
+<p>关键字End的后面加上算法名称，表示算法结束，是算法的最后一句。<br>例如：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-keyword">End</span> DFS<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>补充<br>除了这些，像运算符号* &#x2F; + - %等等，都是和C语言用法一样<br>数组：<br>A[j]指示数组A的第j个元素。符号“ …”用来指示数组中值的范围。例如：<br>A[1…j]表示含元素A[1], A[2], … , A[j]的子数组；<br>还有个写法是A[0:n]表示数组下标从0开始一直到n<br>二维数组也是：A[0:m,0:n]</p>
+</li>
+<li><p>例子</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs oxygene"><span class="hljs-keyword">procedure</span> <span class="hljs-title function_">Bubble</span><span class="hljs-params">(n:integer)</span>;<br>  <span class="hljs-keyword">var</span> temp,i,j:integer<span class="hljs-punctuation">;</span><br>  change:boolean<span class="hljs-punctuation">;</span><br>  <span class="hljs-keyword">begin</span><br>     <span class="hljs-keyword">for</span> i:=<span class="hljs-number">1</span> <span class="hljs-keyword">to</span> n-<span class="hljs-number">1</span> <span class="hljs-keyword">do</span><br>     <span class="hljs-keyword">begin</span><br>       change:=<span class="hljs-keyword">false</span><span class="hljs-punctuation">;</span><br>       <span class="hljs-keyword">for</span> j:=n-<span class="hljs-number">1</span> <span class="hljs-keyword">downto</span> i <span class="hljs-keyword">do</span><br>         <span class="hljs-keyword">if</span> a[j]&gt;a[j+<span class="hljs-number">1</span>] <span class="hljs-keyword">then</span><br>         <span class="hljs-keyword">begin</span><br>           change:=<span class="hljs-keyword">true</span><span class="hljs-punctuation">;</span><br>           temp:=a[j]<span class="hljs-punctuation">;</span> a[j]:=a[j+<span class="hljs-number">1</span>]<span class="hljs-punctuation">;</span> a[j+<span class="hljs-number">1</span>]:=temp<span class="hljs-punctuation">;</span><br>         <span class="hljs-keyword">end</span><span class="hljs-punctuation">;</span><br>         <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span>(change) <span class="hljs-keyword">then</span> <span class="hljs-keyword">exit</span><span class="hljs-punctuation">;</span><br>     <span class="hljs-keyword">end</span><span class="hljs-punctuation">;</span><br>  <span class="hljs-keyword">end</span><span class="hljs-punctuation">;</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 <blockquote>
 <p>它来自旅途的尽头，世界的边缘。来自你我心中，永不停歇</p>
