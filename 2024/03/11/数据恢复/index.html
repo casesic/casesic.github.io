@@ -16,21 +16,26 @@
   <meta name="author" content="casesic">
   <meta name="keywords" content="">
   
-    <meta name="description" content="文件系统组成对于文件系统，主要以Ext4文件系统来说明。 Ext4 文件系统主要由 superblock,inode 和 data block 三部分组成。 但是如果文件系统太大，将所有的 inode 与 data block 放在一起很难管理，因此文件系统在格式化的时候基本上是区分为多个块组（block group），每个块组都有独立的 inode&#x2F;data block&#x2F;su">
+    <meta name="description" content="目的由于自己的愚蠢，误用了dd命令，导致硬盘内的数据丢失，其中一小部分被覆盖。 为了恢复未被覆盖的数据，我进行了一系列的尝试。 注意：该硬盘为机械硬盘，如果是固态硬盘并不保证以下写的方法有效。 过程该硬盘连接到电脑上后，从文件资源管理器进去，是无法看到该硬盘的，只有从硬盘管理进去才可以，如下图所示,磁盘1就是该硬盘   从这可以看出分区表有可能损坏了 然后我开始尝试了一系列免费的数据恢复软件，如r">
 <meta property="og:type" content="article">
-<meta property="og:title" content="文件系统">
-<meta property="og:url" content="http://example.com/2024/03/11/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:title" content="数据恢复">
+<meta property="og:url" content="http://example.com/2024/03/11/%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D/index.html">
 <meta property="og:site_name" content="casesic">
-<meta property="og:description" content="文件系统组成对于文件系统，主要以Ext4文件系统来说明。 Ext4 文件系统主要由 superblock,inode 和 data block 三部分组成。 但是如果文件系统太大，将所有的 inode 与 data block 放在一起很难管理，因此文件系统在格式化的时候基本上是区分为多个块组（block group），每个块组都有独立的 inode&#x2F;data block&#x2F;su">
+<meta property="og:description" content="目的由于自己的愚蠢，误用了dd命令，导致硬盘内的数据丢失，其中一小部分被覆盖。 为了恢复未被覆盖的数据，我进行了一系列的尝试。 注意：该硬盘为机械硬盘，如果是固态硬盘并不保证以下写的方法有效。 过程该硬盘连接到电脑上后，从文件资源管理器进去，是无法看到该硬盘的，只有从硬盘管理进去才可以，如下图所示,磁盘1就是该硬盘   从这可以看出分区表有可能损坏了 然后我开始尝试了一系列免费的数据恢复软件，如r">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-03-11T11:21:23.000Z">
-<meta property="article:modified_time" content="2024-03-11T11:51:32.643Z">
+<meta property="og:image" content="http://example.com/img/kuku.png">
+<meta property="og:image" content="http://example.com/img/cipan.jpg">
+<meta property="og:image" content="http://example.com/img/dmde.jpg">
+<meta property="og:image" content="http://example.com/img/dmde1.jpg">
+<meta property="article:published_time" content="2024-03-11T11:53:01.000Z">
+<meta property="article:modified_time" content="2024-03-11T13:02:38.606Z">
 <meta property="article:author" content="casesic">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/kuku.png">
   
   
   
-  <title>文件系统 - casesic</title>
+  <title>数据恢复 - casesic</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="文件系统"></span>
+            <span id="subtitle" data-typed-text="数据恢复"></span>
           
         </div>
 
@@ -207,7 +212,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-11 19:21" pubdate>
+        <time datetime="2024-03-11 19:53" pubdate>
           2024年3月11日 晚上
         </time>
       </span>
@@ -219,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          886 字
         
       </span>
     
@@ -230,7 +235,7 @@
         
         
         
-          10 分钟
+          8 分钟
         
       </span>
     
@@ -267,57 +272,36 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">文件系统</h1>
+            <h1 id="seo-header">数据恢复</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="文件系统组成"><a href="#文件系统组成" class="headerlink" title="文件系统组成"></a>文件系统组成</h2><p>对于文件系统，主要以Ext4文件系统来说明。</p>
-<p>Ext4 文件系统主要由 <strong>superblock,inode</strong> 和 <strong>data block</strong> 三部分组成。</p>
-<p>但是如果文件系统太大，将所有的 inode 与 data block 放在一起很难管理，因此文件系统在格式化的时候基本上是区分为多个块组（block group），每个块组都有独立的 inode&#x2F;data block&#x2F;super block 系统。</p>
-<h3 id="Data-block"><a href="#Data-block" class="headerlink" title="Data block"></a>Data block</h3><p>是用来放置文件内容数据的地方。</p>
-<p><strong>每个 block 最多只能放一个文件的数据，</strong>若文件太大，会占用多个 block。</p>
-<p>block 的大小为 1k,2k或 4k</p>
-<h3 id="inode"><a href="#inode" class="headerlink" title="inode"></a>inode</h3><p>记录了文件的属性和该文件实际数据放在哪几号的 block 内。</p>
-<p>大小为 128bytes 或 256bytes。</p>
-<p>记录的文件属性至少有底下这些:</p>
-<p>1.该文件的存取模式</p>
-<p>2.该文件的拥有者和群组</p>
-<p>3.该文件的容量</p>
-<p><strong>4.该文件建立或状态改变的时间</strong></p>
-<p>5.最近一次的读取时间</p>
-<p>6.最近修改的时间</p>
-<p>7.定义文件特性的旗标(flag)，如 SetUID</p>
-<p>8.该文件真正内容的指向</p>
-<h3 id="Superblock"><a href="#Superblock" class="headerlink" title="Superblock"></a>Superblock</h3><p>记录此文件系统的整体信息，包括</p>
-<p>1.inode 和 block 的总量，使用量，剩余量。</p>
-<p>2.block 和 inode 的大小(block 为 1k,2k,4k)，inode 为 128bytes 或256bytes.</p>
-<p>3.文件系统的挂载时间，最近一次写入数据的时间，最近一次检验磁盘的时间等文件系统的相关信息</p>
-<p>4.根目录的inode号</p>
-<h3 id="其余"><a href="#其余" class="headerlink" title="其余"></a>其余</h3><p>除这三个部分之外还有 block bitmap(用于查询哪些 block 是空的，哪些是占用的）。</p>
-<p>inode bitmap(用于查询使用和未使用的 inode 号码)。</p>
-<p>当建立一个目录时，文件系统会分配一个 inode 和至少一块 block 给该目录，其中,inode 记录目录的相关权限和属性，分配到的那块 block号码；block 则是记录在这个目录下的文件名与该文件名占用的 inode号码。</p>
-<h2 id="读取一个文件的过程"><a href="#读取一个文件的过程" class="headerlink" title="读取一个文件的过程"></a>读取一个文件的过程</h2><p>eg:我想读取&#x2F;etc&#x2F;passwd 这个文件</p>
-<ol>
-<li><p>&#x2F;的 inode：</p>
-<p>在 superblock 中获取根目录的 inode 号,且 inode 规范的权限可以让我们读取该 block 的内容(有 r 和 x)</p>
-</li>
-<li><p>&#x2F;的 block：</p>
-<p>经上个步骤取得 block 的号码，找到该内容有 etc&#x2F;目录的 inode 号码</p>
-</li>
-<li><p>etc&#x2F;的 inode:</p>
-<p>读取 etc&#x2F;的 inode，有 r 和 x 权限，因此可以读取 etc&#x2F;的 block 的内容</p>
-</li>
-<li><p>etc&#x2F;的 block:</p>
-<p>经上个步骤取得 block 的号码，找到该内容有 passwd 文件的 inode 号码</p>
-</li>
-<li><p>passwd 的 inode:</p>
-<p>读取 passwd 的 inode 号，有 r 权限，因此可以读取 passwd 的 block内容</p>
-</li>
-<li><p>passwd 的 block：</p>
-<p>最后将该 block 内容的数据读出来</p>
-</li>
-</ol>
+                <h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>由于自己的愚蠢<img src="/img/kuku.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />，误用了dd命令，导致硬盘内的数据丢失，其中一小部分被覆盖。</p>
+<p>为了恢复未被覆盖的数据，我进行了一系列的尝试。</p>
+<p>注意：该硬盘为机械硬盘，如果是固态硬盘并不保证以下写的方法有效。</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>该硬盘连接到电脑上后，从文件资源管理器进去，是无法看到该硬盘的，只有从硬盘管理进去才可以，如下图所示,磁盘1就是该硬盘</p>
+<img src="/img/cipan.jpg" srcset="/img/loading.gif" lazyload style="zoom:30%;" />
+
+<p>从这可以看出分区表有可能损坏了</p>
+<p>然后我开始尝试了一系列免费的数据恢复软件，如recuva,r.saver,dmde,等</p>
+<h3 id="Recuva"><a href="#Recuva" class="headerlink" title="Recuva"></a>Recuva</h3><p>recuva恢复数据的能力挺强的，但是有一个大问题就是，它要求硬盘是有盘符的可以在文件系统中被找到的，很遗憾，我们的硬盘并不满足这点，所以我只能和它说拜拜。</p>
+<p><a target="_blank" rel="noopener" href="https://www.ccleaner.com/zh-cn/recuva"> Recuva官网 </a></p>
+<h3 id="R-saver"><a href="#R-saver" class="headerlink" title="R.saver"></a>R.saver</h3><p>R.saver是俄国的一个数据恢复软件，它可以从物理磁盘处来读取我们的硬盘，但是有一个重要的问题是我看不懂俄文，连翻译都不太好翻，当数据恢复结果出来后，我根本不知道应该按哪个键才是恢复数据到其他硬盘上，于是作罢。</p>
+<p><a target="_blank" rel="noopener" href="https://rlab.ru/tools/rsaver.html">R.saver 官网</a></p>
+<h3 id="Dmde"><a href="#Dmde" class="headerlink" title="Dmde"></a>Dmde</h3><p>dmde恢复数据的能力很强，尤其是它可以直接读取我们的硬盘，数据恢复结果出来后，是这样的结果</p>
+<img src="/img/dmde.jpg" srcset="/img/loading.gif" lazyload style="zoom:33%;" />
+
+<p>怎么说呢，相当的混乱，有非常非常多的文件系统，然后我点了一个最大的文件系统8TB进去，得到以下结果</p>
+<img src="/img/dmde1.jpg" srcset="/img/loading.gif" lazyload style="zoom:27%;" />
+
+<p>全是散的文件，而且文件夹数量过多，有大概两万多的文件夹。一个个点恢复不太现实，而且我们并不是要所有的数据，只要2023年的。</p>
+<p>然后我们就想是否可以按照文件修改时间来恢复。然后我们就从原理上考察了这点，参考<a target="_blank" rel="noopener" href="https://casesic.github.io/2024/03/11/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">文件系统 - casesic</a>这篇文章，我们发现在原理上这是可行的。</p>
+<p>可以从根目录的 inode 号开始读取，根据读取文件的过程, 寻找所有文件的 inode 号，可以在最后读取该文件的 inode 号时,获取对应文件的建立和状态改变的时间，再依次将文件分类。因此数据恢复理论上可以依据文件修改时间分类</p>
+<p>经过在软件上点击尝试，好像是右键，会弹出来一个按照修改时间排序的选项，我们可以将所有文件夹按照时间从大到小排序，然后将显示2023年的修改时间的文件恢复。</p>
+<p>注意：是恢复到另一块硬盘上。</p>
+<p><a target="_blank" rel="noopener" href="https://dmde.com/"> DMDE 官网</a></p>
+<h3 id="其他恢复软件"><a href="#其他恢复软件" class="headerlink" title="其他恢复软件"></a>其他恢复软件</h3><p>除此之外，我还尝试了其他恢复软件</p>
 
                 
               </div>
@@ -335,8 +319,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>文件系统</div>
-      <div>http://example.com/2024/03/11/文件系统/</div>
+      <div>数据恢复</div>
+      <div>http://example.com/2024/03/11/数据恢复/</div>
     </div>
     <div class="license-meta">
       
@@ -380,18 +364,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/11/%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D/" title="数据恢复">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据恢复</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/03/05/windows-cmd-improved/" title="windows_cmd_improved">
-                        <span class="hidden-mobile">windows_cmd_improved</span>
+                      <a href="/2024/03/11/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" title="文件系统">
+                        <span class="hidden-mobile">文件系统</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
