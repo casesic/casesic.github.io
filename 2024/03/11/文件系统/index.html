@@ -24,7 +24,7 @@
 <meta property="og:description" content="文件系统组成对于文件系统，主要以Ext4文件系统来说明。 Ext4 文件系统主要由 superblock,inode 和 data block 三部分组成。 但是如果文件系统太大，将所有的 inode 与 data block 放在一起很难管理，因此文件系统在格式化的时候基本上是区分为多个块组（block group），每个块组都有独立的 inode&#x2F;data block&#x2F;su">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-11T11:21:23.000Z">
-<meta property="article:modified_time" content="2024-03-11T11:43:32.137Z">
+<meta property="article:modified_time" content="2024-03-11T11:51:32.643Z">
 <meta property="article:author" content="casesic">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -272,13 +272,13 @@
             
               <div class="markdown-body">
                 
-                <h3 id="文件系统组成"><a href="#文件系统组成" class="headerlink" title="文件系统组成"></a>文件系统组成</h3><p>对于文件系统，主要以Ext4文件系统来说明。</p>
+                <h2 id="文件系统组成"><a href="#文件系统组成" class="headerlink" title="文件系统组成"></a>文件系统组成</h2><p>对于文件系统，主要以Ext4文件系统来说明。</p>
 <p>Ext4 文件系统主要由 <strong>superblock,inode</strong> 和 <strong>data block</strong> 三部分组成。</p>
 <p>但是如果文件系统太大，将所有的 inode 与 data block 放在一起很难管理，因此文件系统在格式化的时候基本上是区分为多个块组（block group），每个块组都有独立的 inode&#x2F;data block&#x2F;super block 系统。</p>
-<h4 id="Data-block"><a href="#Data-block" class="headerlink" title="Data block"></a>Data block</h4><p>是用来放置文件内容数据的地方。</p>
+<h3 id="Data-block"><a href="#Data-block" class="headerlink" title="Data block"></a>Data block</h3><p>是用来放置文件内容数据的地方。</p>
 <p><strong>每个 block 最多只能放一个文件的数据，</strong>若文件太大，会占用多个 block。</p>
 <p>block 的大小为 1k,2k或 4k</p>
-<h4 id="inode"><a href="#inode" class="headerlink" title="inode"></a>inode</h4><p>记录了文件的属性和该文件实际数据放在哪几号的 block 内。</p>
+<h3 id="inode"><a href="#inode" class="headerlink" title="inode"></a>inode</h3><p>记录了文件的属性和该文件实际数据放在哪几号的 block 内。</p>
 <p>大小为 128bytes 或 256bytes。</p>
 <p>记录的文件属性至少有底下这些:</p>
 <p>1.该文件的存取模式</p>
@@ -289,15 +289,15 @@
 <p>6.最近修改的时间</p>
 <p>7.定义文件特性的旗标(flag)，如 SetUID</p>
 <p>8.该文件真正内容的指向</p>
-<h4 id="Superblock"><a href="#Superblock" class="headerlink" title="Superblock"></a>Superblock</h4><p>记录此文件系统的整体信息，包括</p>
+<h3 id="Superblock"><a href="#Superblock" class="headerlink" title="Superblock"></a>Superblock</h3><p>记录此文件系统的整体信息，包括</p>
 <p>1.inode 和 block 的总量，使用量，剩余量。</p>
 <p>2.block 和 inode 的大小(block 为 1k,2k,4k)，inode 为 128bytes 或256bytes.</p>
 <p>3.文件系统的挂载时间，最近一次写入数据的时间，最近一次检验磁盘的时间等文件系统的相关信息</p>
 <p>4.根目录的inode号</p>
-<h4 id="其余"><a href="#其余" class="headerlink" title="其余"></a>其余</h4><p>除这三个部分之外还有 block bitmap(用于查询哪些 block 是空的，哪些是占用的）。</p>
+<h3 id="其余"><a href="#其余" class="headerlink" title="其余"></a>其余</h3><p>除这三个部分之外还有 block bitmap(用于查询哪些 block 是空的，哪些是占用的）。</p>
 <p>inode bitmap(用于查询使用和未使用的 inode 号码)。</p>
 <p>当建立一个目录时，文件系统会分配一个 inode 和至少一块 block 给该目录，其中,inode 记录目录的相关权限和属性，分配到的那块 block号码；block 则是记录在这个目录下的文件名与该文件名占用的 inode号码。</p>
-<h3 id="读取一个文件的过程"><a href="#读取一个文件的过程" class="headerlink" title="读取一个文件的过程"></a>读取一个文件的过程</h3><p>eg:我想读取&#x2F;etc&#x2F;passwd 这个文件</p>
+<h2 id="读取一个文件的过程"><a href="#读取一个文件的过程" class="headerlink" title="读取一个文件的过程"></a>读取一个文件的过程</h2><p>eg:我想读取&#x2F;etc&#x2F;passwd 这个文件</p>
 <ol>
 <li><p>&#x2F;的 inode：</p>
 <p>在 superblock 中获取根目录的 inode 号,且 inode 规范的权限可以让我们读取该 block 的内容(有 r 和 x)</p>
