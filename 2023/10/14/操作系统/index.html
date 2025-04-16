@@ -1,0 +1,765 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="casesic">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="幸福的日子，就是吃饱了撑着去睡觉的日子  操作系统使用Linux&#x2F;Unix的基础命令系统的启动和关闭 系统注册 12# 超级用户$ 普通用户  系统登录 12345671.输入用户名login:root2.输入用户密码，输入的密码不会在屏幕上显示出来，如果输入的密码有误，提示以下信息login incorrectlogin:3.系统显示以下，则说明成功登录[root@localho">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统">
+<meta property="og:url" content="http://example.com/2023/10/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="casesic">
+<meta property="og:description" content="幸福的日子，就是吃饱了撑着去睡觉的日子  操作系统使用Linux&#x2F;Unix的基础命令系统的启动和关闭 系统注册 12# 超级用户$ 普通用户  系统登录 12345671.输入用户名login:root2.输入用户密码，输入的密码不会在屏幕上显示出来，如果输入的密码有误，提示以下信息login incorrectlogin:3.系统显示以下，则说明成功登录[root@localho">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/sheep.jpg">
+<meta property="og:image" content="http://example.com/img/C1.png">
+<meta property="og:image" content="http://example.com/img/s8.png">
+<meta property="article:published_time" content="2023-10-14T12:50:17.000Z">
+<meta property="article:modified_time" content="2023-12-07T06:31:20.589Z">
+<meta property="article:author" content="casesic">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/sheep.jpg">
+  
+  
+  
+  <title>操作系统 - casesic</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>casesic</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="操作系统"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-14 20:50" pubdate>
+          2023年10月14日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          50 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">操作系统</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <img src="/img/sheep.jpg" srcset="/img/loading.gif" lazyload style="zoom:40%;" />
+
+<blockquote>
+<p>幸福的日子，就是吃饱了撑着去睡觉的日子</p>
+</blockquote>
+<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h3 id="使用Linux-Unix的基础命令"><a href="#使用Linux-Unix的基础命令" class="headerlink" title="使用Linux&#x2F;Unix的基础命令"></a>使用Linux&#x2F;Unix的基础命令</h3><h4 id="系统的启动和关闭"><a href="#系统的启动和关闭" class="headerlink" title="系统的启动和关闭"></a>系统的启动和关闭</h4><ul>
+<li><p>系统注册</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crystal"><span class="hljs-comment"># 超级用户</span><br><span class="hljs-variable">$ </span>普通用户<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>系统登录</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-number">1.</span>输入用户名<br><span class="hljs-symbol">login:</span>root<br><span class="hljs-number">2.</span>输入用户密码，输入的密码不会在屏幕上显示出来，如果输入的密码有误，提示以下信息<br>login incorrect<br><span class="hljs-symbol">login:</span><br><span class="hljs-number">3.</span>系统显示以下，则说明成功登录<br>[root@localhost root]<span class="hljs-meta">#</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>系统退出</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">-键入:<span class="hljs-keyword">exit</span><br>-按:Crtl+D<br>-键入:logout<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>系统关闭</p>
+<p>系统将完整地执行关闭所有进程，释放占用资源，停止运行。</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs autoit">[root<span class="hljs-symbol">@localhost</span>/root]<span class="hljs-meta"># shutdown -h now</span><br>[root<span class="hljs-symbol">@localhost</span>/root]<span class="hljs-meta"># halt</span><br>[root<span class="hljs-symbol">@localhost</span>/root]<span class="hljs-meta"># init 0</span><br>[root<span class="hljs-symbol">@localhost</span>/root]<span class="hljs-meta"># poweroff</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>系统重启</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs arduino">使用reboot命令：reboot<br><br>使用shutdown命令：shutdown -r now<br><br>使用init命令：init <span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
+
+<p>shutdown命令</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs subunit">语法:shutdown[flag]&lt;time&gt;[warning message]<br>flag:-r 重启   -h 关机     -k 不关机,只发消息<br><span class="hljs-keyword">time:</span>绝对时间:hh:mm  相对时间: +mm(分钟)   立刻关机:now(=<span class="hljs-string">+0</span>)<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>不能冒然关机的原因</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">1.Linux系统有一个磁盘缓存区，这个缓存区不是立即将所有数据写入磁盘的，而是隔段时间后，再将数据写入磁盘。因此，随手关掉电源可能会导致缓存没有回写， 磁盘上的文件系统不完整；<br>2.在Linux的多任务系统中，可能有许多程序正置于后台运行，只有通过正确的关机顺序， 才可以保证所有的后台进程都能保存自己的数据。<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="文件及目录基本操作指令"><a href="#文件及目录基本操作指令" class="headerlink" title="文件及目录基本操作指令"></a>文件及目录基本操作指令</h4><ul>
+<li><p>shell命令特点</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-number">1</span>.命令补齐功能：指当键入的字符足以确定目录中唯一的文件时，只需按<span class="hljs-selector-tag">Tab</span>键就可以自动补齐该文件剩下部分<br><span class="hljs-selector-attr">[root@localhost/root]</span><span class="hljs-selector-id">#hist</span><span class="hljs-selector-attr">[Tab]</span><br>系统自动帮用户完成命令<br><span class="hljs-selector-attr">[root@localhost/root]</span><span class="hljs-selector-id">#history</span><br><span class="hljs-number">2</span><span class="hljs-selector-class">.Linux</span>的命令区分大小写，通常<span class="hljs-selector-tag">Linux</span>的命令是小写的<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>ls命令-list directory contents</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">语法:ls[参数]路径或文件名</span><br><span class="hljs-section">功能:列出文件或子目录的信息</span><br><span class="hljs-section">参数:</span><br><span class="hljs-section">-a:显示所有文件，包括以.开头的隐藏文件</span><br><span class="hljs-section">-l:以长格式显示文件或子目录的信息</span><br><span class="hljs-section">-i:显示每个文件的索引号</span><br><span class="hljs-section">-R:显示目录及下级子目录结构</span><br><span class="hljs-section">-S:以文件大小排序</span><br></code></pre></td></tr></table></figure>
+
+<p>ls -l</p>
+<img src="/img/C1.png" srcset="/img/loading.gif" lazyload style="zoom:70%;" />
+
+<p>蓝色：目录              浅蓝色：链接文件              绿色：可执行文件          红色：压缩文件         灰色：其他文件</p>
+</li>
+<li><p>pwd - 显示用户所处的当前目录</p>
+</li>
+<li><p>cd目录 - 改变当前目录</p>
+</li>
+<li><p>mkdir命令 - make directories建立目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">语法:<span class="hljs-built_in">mkdir</span>[参数]目录名<br>参数选项:-p:建立目录时，如果父目录不存在，则此时可以和子目录一起建立,即一次可建立多个目录<br>例子:<br><span class="hljs-built_in">mkdir</span> -p dir2/bak<br>在dir2目录下建立bak目录，如果dir2目录不存在，那么同时建立dir2目录<br><span class="hljs-built_in">mkdir</span> dir2/bak<br>在dir2目录下建立bak目录，这里的dir2目录必须是事先存在的<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>rmdir命令 - remove directories删除目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">语法:<span class="hljs-built_in">rmdir</span>[参数]目录名<br>参数选项:-p: 一起删除父目录时，父目录下应无其他目录<br>例子:<br><span class="hljs-built_in">rmdir</span> <span class="hljs-built_in">test</span><br>删除当前目录下的<span class="hljs-built_in">test</span>目录。删除目录时，被删除目录下应无子目录或文件存在<br><span class="hljs-built_in">rmdir</span> -p longkey/test<br>删除当前目录下的longkey/test目录。删除目录<span class="hljs-built_in">test</span>时，如果父目录longkey下无其他内容，则一起删除longkey目录<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>cp命令 - copy file拷贝文件</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs powershell">语法:<span class="hljs-built_in">cp</span>[<span class="hljs-type">options</span>] sourcefile destfile  将文件复制为另一文件<br>    <span class="hljs-built_in">cp</span>[<span class="hljs-type">options</span>] sourcefile... directory  将数个文件复制到一个目录<br>参数选项: <span class="hljs-literal">-p</span> 保持原始文件属性      <span class="hljs-operator">-f</span> 如果目标文件存在，则覆盖它<br>         <span class="hljs-literal">-i</span> 提示是否覆盖现有的普通目标文件    <span class="hljs-literal">-r</span> <span class="hljs-built_in">R</span>:递归复制目录，包含目录下的各级子目录,<span class="hljs-literal">-R</span>允许拷贝设备结点<br>注意:递归拷贝时，目的目录不能在原目录下。如: <span class="hljs-built_in">cp</span> <span class="hljs-literal">-r</span> //targetdir,会使系统死循环或瘫痪<br>例子:<br><span class="hljs-built_in">cp</span> aaa bbb<br>将文件aaa(已存在)复制，并命名为bbb<br><span class="hljs-built_in">cp</span> *.c Finished<br>将所有c语言程序拷贝至Finished目录中<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>rm命令 - 删除文件或目录</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs powershell">语法:<span class="hljs-built_in">rm</span>[-<span class="hljs-type">firR</span>] file/directory<br>参数选项: <span class="hljs-operator">-f</span> 不加提示的删除已存在的文件      <span class="hljs-literal">-i</span> 交互删除     <span class="hljs-literal">-r</span> <span class="hljs-built_in">R</span> 递归删除<br>例子:<br><span class="hljs-built_in">rm</span> <span class="hljs-literal">-i</span> *.c <br>删除所有c语言程序档;删除前逐一询问确认<br><span class="hljs-built_in">rm</span> <span class="hljs-literal">-r</span> Finished<br>将Finished的子目录及子目录的所有文件删除<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>mv命令 - move file移动文件或目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">语法: <span class="hljs-built_in">mv</span>[-<span class="hljs-keyword">fi</span>] sourcefile... targetdirectory     移动文件到目标目录<br>     <span class="hljs-built_in">mv</span> sourcefile targetfile  文件更名<br>参数选项: -f 不提示         -i:目标文件或目录存在时，提示是否覆盖<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>touch命令 - 生成空文件或修改文件的存取和修改时间</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">语法: <span class="hljs-built_in">touch</span>[参数]文件或目录名<br>例子:<br><span class="hljs-built_in">touch</span> *<br>将当前目录下所有文件时间修改为当前系统时间<br><span class="hljs-built_in">touch</span> -d 20050912 <span class="hljs-built_in">test</span> <br>将文件<span class="hljs-built_in">test</span>的时间修改为20050912,-t:后面可以接时间, 格式为 [YYMMDDhhmm]<br><span class="hljs-built_in">touch</span> abc <br>如果abc存在， 则修改为当前系统时间， 如果不存在， 则创建该文件<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="文件和目录的访问权限"><a href="#文件和目录的访问权限" class="headerlink" title="文件和目录的访问权限"></a>文件和目录的访问权限</h4><ul>
+<li><p>文件访问权限</p>
+<ul>
+<li>读权限:只允许用户读其内容，而禁止对其做任何的更改操作</li>
+<li>写权限：允许用户打开并修改文件</li>
+<li>执行权限：用户将该文件作为一个程序执行</li>
+</ul>
+</li>
+<li><p>目录访问权限</p>
+<ul>
+<li>读权限：可以列出存储在该目录下的文件，即读目录内容列表</li>
+<li>写权限：允许从目录中删除或添加新的文件</li>
+<li>执行权限：允许在目录中查找，并能用cd命令将工作目录转到该目录</li>
+</ul>
+</li>
+<li><p>权限变更</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span>命令<br><span class="hljs-built_in">chown</span>命令<br><span class="hljs-built_in">chgrp</span>命令<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="软链接和硬链接"><a href="#软链接和硬链接" class="headerlink" title="软链接和硬链接"></a>软链接和硬链接</h4><ul>
+<li><p>ln命令 - make links between file建立链接</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scss">语法：ln <span class="hljs-selector-attr">[–s]</span> 目标 链接名   (目标：源文件或目录)<br>参数：<br>-s：建立符号链接(软链接symbolic link) <br>    不加-s参数：建立硬链接(hard link)<br>功能：该命令在文件之间创建链接。这种操作实际上是给系统中已有的某个文件指定另外一个可用于访问它的名称。<br>•建立硬链接时，链接文件和被链接文件必须位于同一个文件系统中。而对符号链接，则不存在这个问题。<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>硬链接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">硬连接指通过索引节点来进行的连接。在Linux的文件系统中，保存在磁盘分区中的文件给它分配一个编号，称为索引节点号(Inode Index)。</span><br><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">在Linux中，多个文件名指向同一索引节点是存在的。一般这种连接就是硬连接。</span><br><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">硬连接的作用是允许一个文件拥有多个有效路径名，这样用户就可以建立硬连接到重要文件，以防止“误删”的功能。</span><br>只有当最后一个连接被删除后，文件的数据块及目录的连接才会被释放<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>软链接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">符号连接（Symbolic Link），也叫软链接。软链接文件有点类似于Windows的快捷方式。在符号连接中，文件实际上是一个文本文件，其中包含的有另一文件的位置信息。</span><br><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">如果[链接名]已经存在但不是目录，将不做链接。[链接名]可以是任何一个文件名（可包含路径），也可以是一个目录，并且允许它与“目标”不在同一个文件系统中。</span><br><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">例：$ <span class="hljs-built_in">ln</span> - s study /home/learn</span><br>为当前目录下的文件study创建了一个符号链接/home/learn。<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="文件压缩和备份命令"><a href="#文件压缩和备份命令" class="headerlink" title="文件压缩和备份命令"></a>文件压缩和备份命令</h4><ul>
+<li><p>tar命令 - 文件归档</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">语法:tar[参数] 文件或目录名<br>参数:<br>-c: 建立一个.tar文件<br>-v: 列出处理过程中的详细信息<br>-f: 指定新的文件名<br>-x: 解压某个文件<br>-u: 用于将新的文件或目录添加到已经存在的tar归档文件中。如果文件已经存在，则更新它。<br>-z: 用zip命令压缩或用unzip解压<br></code></pre></td></tr></table></figure></li>
+<li><p>例子</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">tar -cvf <span class="hljs-keyword">back.tar </span><span class="hljs-keyword">backup</span><br><span class="hljs-keyword"></span>备份<span class="hljs-keyword">backup目录下的所有文件和目录</span><br><span class="hljs-keyword"></span>tar -xvf <span class="hljs-keyword">backup.tar </span><br>将备份<span class="hljs-keyword">backup.tar文件还原</span><br><span class="hljs-keyword"></span>tar -cvzf <span class="hljs-keyword">backup.tar.gz </span><span class="hljs-keyword">backup</span><br><span class="hljs-keyword"></span>备份<span class="hljs-keyword">backup目录下的所有文件和目录，并以zip压缩，命名文件为backup.tar.gz</span><br><span class="hljs-keyword"></span>tar -xzvf <span class="hljs-keyword">backup.tar.gz</span><br><span class="hljs-keyword"></span>将备份<span class="hljs-keyword">backup.tar.gz文件还原</span><br><span class="hljs-keyword"></span>tar -tf <span class="hljs-keyword">backup.tar</span><br><span class="hljs-keyword"></span>列出备份文件<span class="hljs-keyword">backup.tar文件的内容</span><br><span class="hljs-keyword"></span>tar -tzf <span class="hljs-keyword">backup.tar.gz</span><br><span class="hljs-keyword"></span>列出备份文件<span class="hljs-keyword">backup.tar.gz文件的内容</span><br><span class="hljs-keyword"></span>tar -rf <span class="hljs-keyword">backup.tar </span>file1<br>在备份<span class="hljs-keyword">backup.tar的尾部添加文件file1</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>常见的压缩工具和解压缩工具</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stylus">压缩工具      解压缩工具       后缀         例<br>compress     uncompress     <span class="hljs-selector-class">.Z</span>       rfell8<span class="hljs-selector-class">.text</span><span class="hljs-selector-class">.Z</span><br>gzip           gunzip       <span class="hljs-selector-class">.gz</span>       textfile. gz<br>zip             unzip       <span class="hljs-selector-class">.zip</span>       pakage<span class="hljs-selector-class">.zip</span><br>一般UNIX系统都可使用compress和uncompress工具例如: <span class="hljs-selector-id">#uncompress</span> file3.Z<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="文件显示命令"><a href="#文件显示命令" class="headerlink" title="文件显示命令"></a>文件显示命令</h4><ul>
+<li><p>cat命令 - 显示文件内容</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs vim">常用用法:<br><span class="hljs-keyword">cat</span> 输入模式，显示用户输入的每一行数据。ctrl+D结束<br><span class="hljs-keyword">cat</span> [-n] <span class="hljs-keyword">file</span> 显示文件的内容，-n可加行号显示<br><span class="hljs-keyword">cat</span> &gt; <span class="hljs-keyword">file</span> 建立简单文本文件，crtl+D结束<br><span class="hljs-keyword">cat</span> file1 file2 ....&gt;fileN  将多个文件集中到一个文件<br><span class="hljs-keyword">cat</span> file1&gt;&gt;file2  连接两个文件<br>参数:<br>-n或 --<span class="hljs-keyword">number</span>    由<span class="hljs-number">1</span>开始对所有输出的行数编号<br>-<span class="hljs-keyword">b</span>或 --<span class="hljs-keyword">number</span>-nonblank   和-n类似，只不过对于空白行不编号<br>-s或 --squeeze-blank  当遇到有连续两行以上的空白行，就代换为一行的空白行<br>例子:<br><span class="hljs-keyword">cat</span> -n textfile1 &gt; textfile2<br>把textfile1的档案内容加上行号后输入textfile2这个档案里<br><span class="hljs-keyword">cat</span> -<span class="hljs-keyword">b</span> textfile1 textfile2 &gt;&gt; textfile3<br>把textfile1和textfile2的档案内容加上行号(空白行不加)之后将内容附加到textfile3<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>more,less命令 - 逐页显示文件内容</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs stata">语法: <span class="hljs-keyword">more</span>[-option][<span class="hljs-keyword">file</span>...]<br>常见的用法:<br><span class="hljs-keyword">more</span> <span class="hljs-keyword">file</span> 分屏显示文件的内容<br><span class="hljs-keyword">ls</span> | <span class="hljs-keyword">more</span> 查找相关目录文件<br><span class="hljs-keyword">ls</span> -al | <span class="hljs-keyword">more</span> 详细查找相关信息，文件信息<br>ps -ef | <span class="hljs-keyword">more</span> 查找相关进程信息<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>head命令 - 显示文件的前几行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">语法:<span class="hljs-built_in">head</span>[参数]文件名<br>参数:<br>-n num:显示文件的前num行<br>-c num:显示文件的前num个字符<br>缺省时，<span class="hljs-built_in">head</span>显示文件的前十行<br>例子:<br><span class="hljs-built_in">head</span> textfile1<br>显示textfile1文件开始的前10行内容<br><span class="hljs-built_in">head</span> -20 textfile2<br>显示textfile2文件开始的前20行内容<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>tail命令 - 显示文件的末尾几行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">语法:<span class="hljs-built_in">tail</span> [-c number]/[-n number] [file]<br>参数:<br>-c: 后的数字为字节位移，缺省为10<br>-n: 行位移,缺省为10<br>例子:<br><span class="hljs-built_in">tail</span> -n3 hs<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>sort命令 - 将文件的内容排序输出</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">语法: <span class="hljs-built_in">sort</span>[参数]文件列表<br>参数：<br>-r:逆向排序，否则，从小到大排序；<br>-n:按数值排序。否则，关键字以字符串比较大小；<br>-t:指定字段 (域) 分割符。缺省是空格或Tab；<br>-k <span class="hljs-built_in">start</span> [, <span class="hljs-keyword">end</span>]:限定关键字。. Start和<span class="hljs-keyword">end</span>格式m[.n],默认从<span class="hljs-number">1</span>开始， <span class="hljs-keyword">end</span>缺省到行尾。m字段号， n字符号。<br>如-k <span class="hljs-number">2.5</span>，<span class="hljs-number">2.9</span> 表示指定以第二字段的第<span class="hljs-number">5</span>个字符至第<span class="hljs-number">9</span>个字符为关键字。<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>uniq命令 - 比较相邻的行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">语法:<span class="hljs-built_in">uniq</span>文件名<br>例子:<br><span class="hljs-built_in">uniq</span> b.txt<br>注意:该命令只是去掉相邻的重复行，不相邻的行并不被过滤,<span class="hljs-built_in">uniq</span>常和<span class="hljs-built_in">sort</span>一起使用<br>例如: <span class="hljs-built_in">sort</span> b.txt |<span class="hljs-built_in">uniq</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>file命令 - 显示文件或目录</p>
+<p>语法:file 文件名或目录</p>
+</li>
+</ul>
+<h4 id="进程管理的命令"><a href="#进程管理的命令" class="headerlink" title="进程管理的命令"></a>进程管理的命令</h4><ul>
+<li><p>ps命令－查看系统中正在运行的进程</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css">语法：ps<span class="hljs-selector-attr">[-ef]</span><span class="hljs-selector-attr">[-n name]</span><span class="hljs-selector-attr">[-t ttys]</span><span class="hljs-selector-attr">[-p pids]</span> <span class="hljs-selector-attr">[-u users]</span><span class="hljs-selector-attr">[-groups]</span><br>参数：<br>-f：产生某个进程的一个完整清单<br>-u：显示进程的用户名和启动时间等信息<br>-t n：显示第n个终端的进程<br>-e：显示所有的进程<br>说明：ps可查看后台进程、前台进程，当ps命令行没有选项时，只显示与控制终端相关进程的基本信息。没有root权限，ps仅限以说明运行进程，报告用户的进程讯息。<br></code></pre></td></tr></table></figure>
+
+<img src="/img/s8.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+</li>
+<li><p>kill命令 - 给进程发送信号</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cos">语法：<span class="hljs-keyword">kill</span> [参数] [进程<span class="hljs-number">1</span>的PID 进程<span class="hljs-number">2</span>的PID…]<br>参数：-<span class="hljs-keyword">s</span> signal：signal是信号类别，如SIGKILL<br><span class="hljs-keyword">kill</span> -<span class="hljs-keyword">l</span> ：显示<span class="hljs-keyword">kill</span>命令所能发送的信号种类，每个信号都有一个数值对应。如：<br>编号    名字       含义<br><span class="hljs-number">1</span>     SIGHUP	  挂起<br><span class="hljs-number">2</span>     SIGINT	  中断(对前台进程中断)<br><span class="hljs-number">9</span>     SIGKILL	  中止 (不可捕捉和忽略，强行消亡)<br><span class="hljs-number">15</span>    SIGTERM	  从<span class="hljs-keyword">kill</span>来的软件中断信号（默认）<br>该信号将通知进程退出。如果进程不接受该信号，可<br>以通过参数 –<span class="hljs-number">9</span> 强行结束进程。<br>使用:<br>从另一终端登录，ps -u loginname查找要杀死进程的PID。<br><span class="hljs-keyword">kill</span> PID杀死进程。<br><span class="hljs-keyword">kill</span> -<span class="hljs-number">9</span> pid更有效，但使被杀死的进程不能关闭它正在使用的任何文件。<br><span class="hljs-symbol">^C</span>/<span class="hljs-symbol">^D</span>/Del也可以向进程发中断信号。建议首先使用<span class="hljs-keyword">kill</span> pid。<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>top命令－实时监控进程状况</p>
+<p> top屏幕自动每5秒刷新一次，也可以用top –d 20，使得top屏幕每20秒刷新一次。</p>
+</li>
+<li><p>jobs命令 - 查看当前shell下正在运作的作业</p>
+</li>
+<li><p>sleep命令 - 进程睡眠</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gauss">使当前正在执行的进程在规定的时间内处于睡眠。<br><span class="hljs-built_in">sleep</span>的参数为进程将睡眠的时间，单位为秒。<br>例如： <span class="hljs-built_in">sleep</span> <span class="hljs-number">300</span><br><span class="hljs-number">5</span>分钟后才能出现<span class="hljs-built_in">shell</span>提示符<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="一些注意点"><a href="#一些注意点" class="headerlink" title="一些注意点"></a>一些注意点</h4><ul>
+<li><p>变址寻址</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dns">变址寻址是一种寻址方式，它可以根据变址寄存器的内容和指令中的形式地址来计算出操作数的有效地址。变址寻址的优点是可以实现动态的地址变化，从而实现数组、表、栈等数据结构的访问。变址寻址的缺点是需要额外的变址寄存器，而且变址寄存器的内容不能超过指令地址码的位数。<br>变址寻址的一般格式是：<br>EA=R+<span class="hljs-keyword">A</span><br>其中，EA 是有效地址，R 是变址寄存器的内容，<span class="hljs-keyword">A</span> 是指令中的形式地址。<br></code></pre></td></tr></table></figure></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>操作系统</div>
+      <div>http://example.com/2023/10/14/操作系统/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>casesic</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年10月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/10/22/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" title="数学建模">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数学建模</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/11/ps/" title="ps">
+                        <span class="hidden-mobile">ps</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
