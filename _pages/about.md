@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "余悦 · Yu Yue"
+title: "余悦"
 author_profile: true
 redirect_from:
   - /about/
@@ -30,7 +30,7 @@ redirect_from:
 **3D 人体与跨相机对应**
 研究多视角鱼眼/ERP 全景下的人体捕捉：从人体重建投影，到直接预测二维语义点，再到多相机之间的点对应与合图。核心问题是**遮挡、边缘和视角变化下的点对应可靠性**。
 
-## 📄 Projects
+## 📄 Projects {: #projects}
 
 > 四个仓库是同一条链路的四段。数字都来自各仓库的文档，口径与限制写在仓库里。
 
