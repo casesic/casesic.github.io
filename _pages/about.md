@@ -1,56 +1,97 @@
 ---
 permalink: /
-title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "余悦 · Yu Yue"
 author_profile: true
-redirect_from: 
+redirect_from:
   - /about/
   - /about.html
 ---
 
-This is the front page of a website that is powered by the [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the repository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. Incidentally, these same features make it a great template for anyone that needs to show off a professional template!
+我是**余悦**，天津大学 2026 级硕士研究生，在 **TJU3DV** 实验室。我的研究兴趣是**具身智能中的灵巧手操作**和 **3D 人体**：既关心手怎么稳定地抓住东西，也关心人怎么被准确地重建出来、并且在不同视角之间保持身份一致。
 
- You can fork [this template](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and Markdown files, add your own PDFs and other content, and have your own site for free, with no ads!
+本科同样在天津大学读**计算机科学与技术**（2022–2026），毕设做的是**双相机鱼眼全景下的人体跨相机拼接** —— 要把 A 相机拍到的人，可信地放进 B 相机的画面里。这件事往下拆，就变成了四个仓库：先把合成数据产出来，再训跨相机语义点对应，然后做定量评价，最后落到真实鱼眼图上的合图与实时推理。我喜欢把一条链路从数据一直打通到实时性能，而不是只做其中一段。
 
-A data-driven personal website
-======
-Like many other Jekyll-based GitHub Pages templates, Academic Pages makes you separate the website's content from its form. The content & metadata of your website are in structured Markdown files, while various other files constitute the theme, specifying how to transform that content & metadata into HTML pages. You keep these various Markdown (.md), YAML (.yml), HTML, and CSS files in a public GitHub repository. Each time you commit and push an update to the repository, the [GitHub pages](https://pages.github.com/) service creates static HTML pages based on these files, which are hosted on GitHub's servers free of charge.
+**Research interests**：embodied dexterous manipulation · 3D human capture · synthetic data for human-centric vision · multi-camera correspondence · real-time inference
 
-Many of the features of dynamic content management systems (like Wordpress) can be achieved in this fashion, using a fraction of the computational resources and with far less vulnerability to hacking and DDoSing. You can also modify the theme to your heart's content without touching the content of your site. If you get to a point where you've broken something in Jekyll/HTML/CSS beyond repair, your Markdown files describing your talks, publications, etc. are safe. You can rollback the changes or even delete the repository and start over - just be sure to save the Markdown files! You can also write scripts that process the structured data on the site, such as [this one](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb) that analyzes metadata in pages about talks to display [a map of every location you've given a talk](https://academicpages.github.io/talkmap.html).
+---
 
-For those users that need more advanced functionality, the template also supports the following popular tools:
-- [MathJax](https://www.mathjax.org/) for mathematical equations
-- [Mermaid](https://mermaid.js.org/) for diagraming
-- [Plotly](https://plotly.com/javascript/) for plotting
+## 🎓 Education
 
-Getting started
-======
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Fork [this template](https://github.com/academicpages/academicpages.github.io) by clicking the "Use this template" button in the top right. 
-1. Go to the repository's settings (rightmost item in the tabs that start with "Code", should be below "Unwatch"). Rename the repository "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and create content & metadata (see below -- also see [this set of diffs](https://archive.is/3TPas) showing what files were changed to set up [an example site](https://getorg-testacct.github.io) for a user with the username "getorg-testacct")
-1. Upload any files (like PDFs, .zip files, etc.) to the files/ directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.  
-1. Check status by going to the repository settings, in the "GitHub pages" section
+| 时间 | 学校 | 专业 / 学位 |
+|---|---|---|
+| 2026.09 – 2029.06 | 天津大学 | 电子信息 · 硕士研究生（TJU3DV 实验室） |
+| 2022.09 – 2026.06 | 天津大学 | 计算机科学与技术 · 工学学士 |
 
-Site-wide configuration
-------
-The main configuration file for the site is in the base directory in [_config.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_config.yml), which defines the content in the sidebars and other site-wide features. You will need to replace the default variables with ones about yourself and your site's github repository. The configuration file for the top menu is in [_data/navigation.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_data/navigation.yml). For example, if you don't have a portfolio or blog posts, you can remove those items from that navigation.yml file to remove them from the header. 
+## 🧪 Research
 
-Create content & metadata
-------
-For site content, there is one Markdown file for each type of content, which are stored in directories like _publications, _talks, _posts, _teaching, or _pages. For example, each talk is a Markdown file in the [_talks directory](https://github.com/academicpages/academicpages.github.io/tree/master/_talks). At the top of each Markdown file is structured data in YAML about the talk, which the theme will parse to do lots of cool stuff. The same structured data about a talk is used to generate the list of talks on the [Talks page](https://academicpages.github.io/talks), each [individual page](https://academicpages.github.io/talks/2012-03-01-talk-1) for specific talks, the talks section for the [CV page](https://academicpages.github.io/cv), and the [map of places you've given a talk](https://academicpages.github.io/talkmap.html) (if you run this [python file](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.py) or [Jupyter notebook](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb), which creates the HTML for the map based on the contents of the _talks directory).
+**具身智能 · 灵巧手**
+研究灵巧手在真实与仿真环境中的操作：手物接触、抓取稳定性，以及从人类演示到机器人手的动作迁移。关注点是把「人怎么做」变成「手怎么学」。
 
-**Markdown generator**
+**3D 人体与跨相机对应**
+研究多视角鱼眼/ERP 全景下的人体捕捉：从人体重建投影，到直接预测二维语义点，再到多相机之间的点对应与合图。核心问题是**遮挡、边缘和视角变化下的点对应可靠性**。
 
-The repository includes [a set of Jupyter notebooks](https://github.com/academicpages/academicpages.github.io/tree/master/markdown_generator
-) that converts a CSV containing structured data about talks or presentations into individual Markdown files that will be properly formatted for the Academic Pages template. The sample CSVs in that directory are the ones I used to create my own personal website at stuartgeiger.com. My usual workflow is that I keep a spreadsheet of my publications and talks, then run the code in these notebooks to generate the Markdown files, then commit and push them to the GitHub repository.
+## 📄 Projects
 
-How to edit your site's GitHub repository
-------
-Many people use a git client to create files on their local computer and then push them to GitHub's servers. If you are not familiar with git, you can directly edit these configuration and Markdown files directly in the github.com interface. Navigate to a file (like [this one](https://github.com/academicpages/academicpages.github.io/blob/master/_talks/2012-03-01-talk-1.md) and click the pencil icon in the top right of the content preview (to the right of the "Raw | Blame | History" buttons). You can delete a file by clicking the trashcan icon to the right of the pencil icon. You can also create new files or upload files by navigating to a directory and clicking the "Create new file" or "Upload files" buttons. 
+> 四个仓库是同一条链路的四段。数字都来自各仓库的文档，口径与限制写在仓库里。
 
-Example: editing a Markdown file for a talk
-![Editing a Markdown file for a talk](/images/editing-talk.png)
+### 1 · 合成人体数据生成器
 
-For more info
-------
-More info about configuring Academic Pages can be found in [the guide](https://academicpages.github.io/markdown/), the [growing wiki](https://github.com/academicpages/academicpages.github.io/wiki), and you can always [ask a question on GitHub](https://github.com/academicpages/academicpages.github.io/discussions). The [guides for the Minimal Mistakes theme](https://mmistakes.github.io/minimal-mistakes/docs/configuration/) (which this theme was forked from) might also be helpful.
+[`human_data_generator`](https://github.com/casesic/human_data_generator)
+
+用已有的人体、动作、衣物和发型资产，在 Blender 里程序化生成走路、骑行、多人交会等场景。每个相机输出 RGB、目标人物 mask、有序 512 点坐标与可见性三态（可见 / 遮挡 / 未知）；框由 mask 派生，不额外标注。
+
+- **规模**：35 个完整场景（原城市 20 + 遮挡 15），按 28 个训练 / 7 个验证划分
+- **技术栈**：Python · Blender (bpy) · NumPy · OpenEXR · Blender 程序化渲染
+
+### 2 · 跨相机语义点对应
+
+[`densekp_retrain`](https://github.com/casesic/densekp_retrain)
+
+针对指定人体框回归 **138 个身体语义点**，服务跨相机同一人体的点对应。仓库覆盖数据准备、Dataset、训练、推理与评价；多人遮挡、框中心/尺度变化、截断与鱼眼展开畸变都在研究范围内。
+
+- **技术栈**：PyTorch · PyTorch Lightning · Hydra · Detectron2 系 backbone
+- **一句话**：这条路线后来被 MAMMA 取代，现在保留为历史对照 —— 但遮挡与框变化鲁棒性的结论仍然有效
+
+### 3 · 微调与定量评价
+
+[`mamma_retrain`](https://github.com/casesic/mamma_retrain)
+
+MAMMA（CVPR 2026 Oral）的 fork。我在上游推理链之上加了微调 / 重训流程、可见性阈值研究和数据适配，并用统一验证集做定量评价。
+
+| 指标（7 场景 / 814 条观察） | 原模型（阈值 0.5） | 微调后（阈值 0.85） |
+|---|---:|---:|
+| ERP 点均误差 | 4.3954 px | **2.5242 px** |
+| 可见召回 | 82.64% | **91.33%** |
+| 遮挡召回 | 95.73% | 94.76% |
+
+点均误差下降约 **42.6%**。**三条限制必须一起读**：0.85 这个阈值是在同一份验证集上看过之后选的（同集选择，不是独立验证）；这不是独立测试；真实图片没有人工点位真值，人工判断是整体画面意见，不是逐帧准确率。
+
+- **技术栈**：PyTorch · CUDA · 多相机 SMPL-X / 2D 点位模型微调
+
+### 4 · 鱼眼全景合图与实时化
+
+[`Panorama-Stitch-Lab`](https://github.com/casesic/Panorama-Stitch-Lab)
+
+双相机鱼眼 / ERP 全景下的人体捕捉与跨相机合图实验工程（本科毕设）。链路从原始鱼眼视频走到「把 A 相机里的人搬进 B 相机画面」，中途把最贵的 SMPL-X 拟合用 C++ / CUDA 重写成可自测、可基准的 staged 求解器。
+
+- **实时化**：C++ staged-LM 单帧拟合 **5 FPS → 25–30 FPS**（RTX 3090；点数与命令当时未记录）
+- **规模**：约 72k 行 Python + 约 10.7k 行 C++/CUDA
+- **技术栈**：Python · C++ / CUDA · Eigen · TensorRT · 解析 Jacobian + Schur 补
+
+## 🏆 Awards
+
+| 时间 | 奖项 |
+|---|---|
+| 2024 – 2026 | 国家级大学生创新创业训练计划 —— **可信投影的非结构化大场景光场图像缝合** |
+| 2025 | 全国大学生集成电路创新创业大赛 · 华北分赛区 **二等奖** |
+| 2022 – 2023 | 天津大学 **三好学生** |
+
+## 🌿 Beyond
+
+头像是一只躺着玩手机的猫。
+
+## 📫 Contact
+
+- **Email**：[2083733118@qq.com](mailto:2083733118@qq.com)
+- **GitHub**：[@casesic](https://github.com/casesic)
+- 天津，中国

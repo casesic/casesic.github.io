@@ -1,18 +1,9 @@
 # Authors
 
-Name Name:
-  name        : "Name Name"
-  uri         : "https://name.com"
-  email       : "name@name.com"
-  bio         : "This is the first name."
-  avatar      : "bio-photo-2.jpg"
-  twitter     : "name"
-  google_plus : "Name"
-
-Name2 Name2:
-  name        : "Name2 Name2"
-  email       : "name2@name2.com"
-  bio         : "I ordered what?"
-  avatar      : "bio-photo.jpg"
-  twitter     : "name2"
-  google_plus : "Name"
+余悦:
+  name        : "余悦"
+  uri         : "https://github.com/casesic"
+  email       : "2083733118@qq.com"
+  bio         : "天津大学 2026 级硕士研究生，TJU3DV；研究具身智能中的灵巧手与 3D 人体。"
+  avatar      : "profile.png"
+  github      : "casesic"
